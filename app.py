@@ -1,8 +1,12 @@
 from flask import Flask, request , jsonify
-import mysql.connector
+import mysql.connector, os
 from dotenv import load_dotenv
+from flasgger import Swagger
 
 app = Flask(__name__)
+load_dotenv()
+swagger = Swagger(app)
+
 
 conn = mysql.connector.connect(
     host=os.getenv("DB_HOST"),
@@ -10,7 +14,6 @@ conn = mysql.connector.connect(
     password=os.getenv("DB_PASSWORD"),
     database=os.getenv("DB_NAME")
 )
-
 
 cursor = conn.cursor()
 
