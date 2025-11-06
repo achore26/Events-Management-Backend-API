@@ -3,8 +3,10 @@ import mysql.connector, os
 from dotenv import load_dotenv
 from flasgger import Swagger
 
-app = Flask(__name__)
 load_dotenv()
+
+app = Flask(__name__)
+
 swagger = Swagger(app)
 
 
